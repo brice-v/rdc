@@ -15,7 +15,7 @@ import (
 	"github.com/gobwas/glob"
 	"github.com/google/uuid"
 
-	_ "github.com/mattn/go-sqlite3"
+	_ "modernc.org/sqlite"
 )
 
 type dbTyp string
@@ -648,7 +648,7 @@ func createSaveDBIfNotExists() *dbFile {
 	file, err := os.Open(dbName)
 	check(err)
 
-	saveDb, err := sql.Open("sqlite3", "./save.db")
+	saveDb, err := sql.Open("sqlite", "./save.db")
 	check(err)
 
 	return &dbFile{db: saveDb, f: file}
